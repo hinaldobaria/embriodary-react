@@ -1,11 +1,13 @@
 // rafce
-import Navbar from "../components/Navbar"
+
+import HeroSection from "../components/HeroSection"
+
 const Home = () => {
   return (
-    <>
-      <Navbar/>
-      <div>Home</div>
-    </>
+    <div className="mt-36">
+      <HeroSection/>
+      
+    </div>
     
   )
 }
