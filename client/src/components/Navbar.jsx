@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import React from "react";
+
 
 const Navbar = () => {
   return (
@@ -8,7 +8,7 @@ const Navbar = () => {
       <div className="flex justify-between items-center">
         {/*i will add the image here later*/}
         <img src="/picprismlogo.png" alt="out logo" className="w-[50px]"></img>
-        <Link to="/" className="font-bold text-3xl">JR Creation</Link>
+        <Link to="/" className="font-bold text-3xl">ThreadLoom</Link>
       </div>
 
       {/*list of other tabs*/}

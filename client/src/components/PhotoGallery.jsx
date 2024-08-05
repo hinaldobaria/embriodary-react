@@ -9,7 +9,8 @@ const PhotoGallery = () => {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 bg-20">        
         {/*Image card*/}
         <ImageCard 
-            title="Choose Happy"
+            title="Text
+              "
             author="coder29"
             img="./design1.png"
             price={1000}
