@@ -7,12 +7,12 @@ import BuyerDashboard from "../pages/BuyerDashboard"
 import gsap from "gsap"
 import { useEffect,useRef } from "react";
 import {Toaster} from "react-hot-toast";
-
+ 
 const GsapTransition = () => {
 
     const nodeRef=useRef(null);
     const location=useLocation();
-    // whenever the location will be changed, at that moment the use effect will run, because we will make this useEffect hook dependent
+    // whenever the location wil be changed, at that moment the use effect will run, because we will make this useEffect hook dependent
 
     // when a page renders the use effect runs first
     useEffect(() => { 
