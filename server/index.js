@@ -8,7 +8,7 @@ const { Server } = require("http");
 // import the route here
 // const authRoute = require("./routes/authRoutes");
 const {connectDb} = require("./connection");
-
+const cors = require("cors")
 // binding this env
 dotenv.config()
 // call express in one variable
@@ -18,6 +18,10 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 connectDb()
+// making routes
+app.use(cors());
+// Middleware to parse JSON
+app.use(express.json());
 // making routes
 app.get("/", (req, res) => {
   res.send("Server Running...");
