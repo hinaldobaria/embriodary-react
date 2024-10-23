@@ -1,52 +1,50 @@
-// 4 steps procedure to make Service
-// call express in this File
+// 4 steps procedure to make server
 
+// Express ko bulna hoga is file me
 const express = require("express");
 const dotenv = require("dotenv");
-const {readdirSync}=require("fs");
-const { Server } = require("http");
+const { readdirSync } = require("fs");
+const { connectDb } = require("./connection");
+const cors = require("cors");
 // import the route here
 // const authRoute = require("./routes/authRoutes");
-const {connectDb} = require("./connection");
-const cors = require("cors")
-// binding this env
-dotenv.config()
-// call express in one variable
-const app = express();
 
-// define port
+// binding this env
+dotenv.config();
+// Express ko call karna padega ek variable me
+const app = express();
+// port define karna hoga - Port hota hai darwaja
 const port = process.env.PORT || 5000;
 
-connectDb()
-// making routes
-app.use(cors());
-// Middleware to parse JSON
+connectDb();
+// Making routes
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL,
+    credentials: true,
+  })
+);
 app.use(express.json());
-// making routes
 app.get("/", (req, res) => {
-  res.send("Server Running...");
-});
-// how to use routes
-// app.use("/api",authRoute);
-
-
-// importing and using routes dynamically
-readdirSync("./routes").map((route)=>{
-app.use("/api",require(`./routes/${route}`))
+  res.send("<center><h1>Server Running Dudes...</h1></center>");
 });
 
+// How to use routes
+// app.use("/api", authRoute);
 
-// readdirSync("./routes")
-// console.log(`Server is running on port ${port}`);
+// importing and using routes dyanmically
+readdirSync("./routes").map((route) =>
+  app.use("/api", require(`./routes/${route}`))
+);
+// console.log(readdirSync("./routes"))
 
 // types of requests
-// 1. GET -> to get the data from the Server
-// 2. POST -> to post the data to the Server
-// 3. PUT -> to update the data on the Server
-// 4. DELETE -> to delete the  data from the server
+// 1. GET -> To get the data from the server
+// 2. POST -> To post the data to the server
+// 3. PUT -> To update the data on the server
+// 4. DELETE -> To dete the data form the server
 
-// listen to server
+// Server ko listen karna hoga
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
